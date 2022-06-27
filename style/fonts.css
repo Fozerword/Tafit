@@ -1,0 +1,126 @@
+@font-face {
+	font-family: "Arkhip";
+	src: url("../fonts/arkhip/Arkhip.eot");
+	/* IE9 Compat Modes */
+	src: url("../fonts/arkhip/Arkhip.eot?#iefix") format("embedded-opentype"),
+		/* IE6-IE8 */
+		url("../fonts/arkhip/Arkhip.otf") format("opentype"),
+		/* Open Type Font */
+		url("../fonts/arkhip/Arkhip.svg") format("svg"),
+		/* Legacy iOS */
+		url("../fonts/arkhip/Arkhip.ttf") format("truetype"),
+		/* Safari, Android, iOS */
+		url("../fonts/arkhip/Arkhip.woff") format("woff"),
+		/* Modern Browsers */
+		url("../fonts/arkhip/Arkhip.woff2") format("woff2");
+	/* Modern Browsers */
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Comfortaa";
+	src: url("../fonts/comfortaa/comfortaa.eot");
+	/* IE9 Compat Modes */
+	src: url("../fonts/comfortaa/comfortaa.eot?#iefix") format("embedded-opentype"),
+		/* IE6-IE8 */
+		url("../fonts/comfortaa/comfortaa.otf") format("opentype"),
+		/* Open Type Font */
+		url("../fonts/comfortaa/comfortaa.svg") format("svg"),
+		/* Legacy iOS */
+		url("../fonts/comfortaa/comfortaa.ttf") format("truetype"),
+		/* Safari, Android, iOS */
+		url("../fonts/comfortaa/comfortaa.woff") format("woff"),
+		/* Modern Browsers */
+		url("../fonts/comfortaa/comfortaa.woff2") format("woff2");
+	/* Modern Browsers */
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Comfortaa Light";
+	src: url("../fonts/comfortaa-light/comfortaa-light.eot");
+	/* IE9 Compat Modes */
+	src: url("../fonts/comfortaa-light/comfortaa-light.eot?#iefix") format("embedded-opentype"),
+		/* IE6-IE8 */
+		url("../fonts/comfortaa-light/comfortaa-light.otf") format("opentype"),
+		/* Open Type Font */
+		url("../fonts/comfortaa-light/comfortaa-light.svg") format("svg"),
+		/* Legacy iOS */
+		url("../fonts/comfortaa-light/comfortaa-light.ttf") format("truetype"),
+		/* Safari, Android, iOS */
+		url("../fonts/comfortaa-light/comfortaa-light.woff") format("woff"),
+		/* Modern Browsers */
+		url("../fonts/comfortaa-light/comfortaa-light.woff2") format("woff2");
+	/* Modern Browsers */
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Comfortaa Bold";
+	src: url("../fonts/comfortaa-bold/comfortaa-bold.eot");
+	/* IE9 Compat Modes */
+	src: url("../fonts/comfortaa-bold/comfortaa-bold.eot?#iefix") format("embedded-opentype"),
+		/* IE6-IE8 */
+		url("../fonts/comfortaa-bold/comfortaa-bold.otf") format("opentype"),
+		/* Open Type Font */
+		url("../fonts/comfortaa-bold/comfortaa-bold.svg") format("svg"),
+		/* Legacy iOS */
+		url("../fonts/comfortaa-bold/comfortaa-bold.ttf") format("truetype"),
+		/* Safari, Android, iOS */
+		url("../fonts/comfortaa-bold/comfortaa-bold.woff") format("woff"),
+		/* Modern Browsers */
+		url("../fonts/comfortaa-bold/comfortaa-bold.woff2") format("woff2");
+	/* Modern Browsers */
+	font-weight: normal;
+	font-style: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+	color: white;
+	font-family: 'Comfortaa';
+}
+
+h6 {
+	font-family: 'Comfortaa';
+	color: rgb(255, 255, 255);
+	margin: 0;
+}
+
+p {
+	font-family: 'Comfortaa Light';
+	color: rgb(182, 182, 182);
+	font-size: 14px;
+}
+
+h2#name_rasdel {
+	margin: 10px 0 10px 0;
+}
+
+div.names p {
+	margin: 0;
+}
+
+h6.mediateka {
+	color: rgb(187, 187, 187);
+	margin: 5px 0;
+}
+
+p.lenght-time,
+p.time {
+	margin: 0 20px;
+}
+
+.marginH2 {
+	margin: 20px 0 15px 0;
+}
+
+.marginH3 {
+	margin: 15px 0 5px 0;
+}

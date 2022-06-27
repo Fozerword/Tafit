@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css"><!----bootstrap-->
+    <link rel="stylesheet" href="style/fonts.css"><!----stylefont-->
+    <script src="bootstrap/bootstrap.min.js"></script><!----bootstrap-->
+    <script src="bootstrap/bootstrap.bundle.js"></script><!----bootstrap-->
+    <script src="script/jquery-3.6.0.min.js"></script><!----------------JQuery-->
+    <script src="script/fuction.js"></script><!----------------------------------основные функции-->
+    <link rel="stylesheet" href="style/index.css"><!-------------------------------------------------основные стили-->
+    <link rel="icon" href="img/icon/icon_href.png"><!-------------------------------------------------------------------иконка-->
+    <link rel="stylesheet" href="style/media.css"><!-------------------------------------------------------------------------------адаптив-->
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src = "script/anime.min.js"> </script>
+    <title>Tafit</title>
+</head>
+
+<body>
+<div id="app">
+    <!----------------------------- Left-menu ---------------------------------------------------------->
+    <div class="burger-left">
+        <span></span>
+    </div>
+    <div class="left-menu" v-if="settingA">
+        <div class="container-md menu">
+            <div class="row">
+                <div class="col-12">
+                    <div class="icon">
+                        <img src="img/icon/Tafit.png" alt="">
+                    </div>
+                    <ul class="to-Tafit">
+                        <li class="active"><button>Главная</button></li>
+                        <li><button>Обзор</button></li>
+                        <li><button>Радио</button></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="block-playlists">
+                <h6 class="mediateka">МОЯ МЕДИАТЕКА</h6>
+                <hr class="horizontal">
+                <ul class="playlist">
+                    <li><button>Избранное</button></li>
+                    <li><button>Недавно прослушиваемые</button></li>
+                </ul>
+                <button class="new-playlist">Новый плейлист</button>
+            </div>
+        </div>
+    </div>
+<!------------------------------------------ Player ------------------------------------------------------>
+    <div class="player" v-if="settingA">
+        <div class="row">
+            <div class="col-5 col-xxl-2 col-xl-2 col-lg-3 col-md-3 col-sm-4 centers">
+                <div class="mini-icon-music">
+                    <img src="" alt="">
+                </div>
+                <div class="names ">
+                    <h6>Name_track</h6>
+                    <p>name_group</p>
+                </div>
+            </div>
+            <div class="col-6 col-sm-7 offset-xxl-1 offset-xl-1 col-lg-6 co center">
+                <div class="btns-group">
+                    <button class="shuffle"  v-on:click="shuffle" :class="{ active: activeSh }"></button>
+                    <button class="prew"></button>
+                    <button class="play-pause" v-on:click="play_pause" :class="{ active: activePP }"></button>
+                    <button class="next"></button>
+                    <button class="povtor" v-on:click="povtor" :class='activeP'></button>
+                </div>
+                <div class="block-progressbar">
+                    <p class="time">{{fotmatTime(timeCurrent)}}</p>
+                    <input type="range" name="progress-music" id="progress-music" min="0" :max='timeTrack'  v-model.number="timeCurrent" step="1">
+                    <p class="lenght-time">{{fotmatTime(timeTrack)}}</p>
+                </div>
+            </div>
+        </div>
+        <button class="playlist" id="playlist"></button>
+    </div>
+<!----------------------------------------------------------- Content-carusel ------------------------------------------------------------------->
+    <div class="container-md" v-if="settingA">
+        <div class="row">
+            <div class="col-10 offset-1 col-xxl-9 col-xl-9 col-lg-9 col-md-8 col-sm-10 offset-xxl-3 offset-xl-3 offset-lg-3 offset-md-4 offset-sm-1 block" id="list">
+                <div class="row">
+                    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active" data-bs-interval="10000">
+                                <img src="slider/slider_1.jpg" class="d-block" alt="...">
+                            </div>
+                            <div class="carousel-item" data-bs-interval="10000">
+                                <img src="slider/slider_1.jpg" class="d-block" alt="...">
+                            </div>
+                            <div class="carousel-item" data-bs-interval="10000">
+                                <img src="slider/slider_1.jpg" class="d-block" alt="...">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!--------------------------------------------------------- Content-vhod ------------------------------------------------------------->
+    <div class="container-md" id="one_cont" v-if="settingA">
+        <div class="row">
+            <div class="col-10 offset-1 col-xxl-9 col-xl-9 col-lg-9 col-md-8 col-sm-10 offset-xxl-3 offset-xl-3 offset-lg-3 offset-md-4 offset-sm-1 nav-menu " id="list">
+                <div class="row navigation">
+                    <form action="#" class="col-7 col-sm-6 col-md-6 col-lg-6 col-xl-5 col-xxl-5 seach">
+                        <div class="seach">
+                            <input type="text" class="seach" placeholder="исполнитель, песня">
+                            <input type="submit" class="btn_seach" value=" ">
+                        </div>
+                    </form>
+                    <div class="col-2 offset-3 offset-md-4 offset-sm-4 offset-xxl-5 offset-xl-5">
+                        <button class="perehod" @click="vhod" v-if="vhodBtn">войти</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!------------------------------------------------------------ Content-music --------------------------------------------------------->
+    <div class="container-md offset-b" v-if="settingA">
+        <div class="row">
+            <div class="col-10 offset-1 col-xxl-9 col-xl-9 col-lg-9 col-md-8 col-sm-10 offset-xxl-3 offset-xl-3 offset-lg-3 offset-md-4 offset-sm-1 content" id="list">
+                <div class="row" id="first">
+                    <hr class="horizontal"><h2 id="name_rasdel">Популярное</h2><hr class="horizontal">
+                </div>
+                <div class="row">
+                    <div class="col-12 col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-4\" v-for= "(item, index) in NameTrack">
+                        <div class="track">
+                            <div class="shapka" id="track" @mouseenter="bnt_track" @mouseleave="btn_leave">
+                                <button class="btnplay"></button>
+                                <button class="btnadd"></button>
+                                <button class="btnshare"></button>
+                                <img v-bind:src="OblTrack[index]" alt="" >
+                            </div>
+                            <div class="opisanie">
+                                <div class="scroler"><h6>{{NameTrack[index]}}</h6></div>
+                                <div class="scroler"><p>{{GroupTrack[index]}}</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row footer">
+                    <hr class="horizontal">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-------------------------------------------------Form*********--------------------------------->
+    <div class="fontForm" v-if ="form">
+        <div class="row" >
+                <button class="exit" v-on:click = "exitForm"></button>
+                <form  class="form-vhod" method="post" id="formVhod" action="" v-if ="noRegister">
+                    <img src="img/icon/tafit_.png" alt="Tafit" class="form-img">
+                    <div class="label-input">
+                        <label for="login">Login:</label>
+                        <input type="e-mail" id="login" name="login" placeholder="введите логин или e-mail">
+                    </div>
+                    <div class="label-input">
+                        <label for="Password">Password:</label>
+                        <input type="password" id="Password" name="Password" placeholder="введите пароль">
+                    </div>
+                    <h6 class="error">{{errorMessage}}</h6>
+                    <div class="btn-form">
+                        <button class="vhod-form" @click="vhodForm">Войти</button>
+                        <button class="register" @click="registered">Регистрация</button>
+                    </div>
+                </form>
+                <form  class="form-vhod" method="post" id="formVhod" action="" v-else>
+                    <img src="img/icon/tafit_.png" alt="Tafit" class="form-img">
+                    <div class="label-input">
+                        <label for="login">Name:</label>
+                        <input type="name" id="login" name="login" placeholder="введите логин или e-mail">
+                    </div>
+                    <div class="label-input">
+                        <label for="Password">e-mail:</label>
+                        <input type="e-mail" id="Password" name="Password" placeholder="введите пароль">
+                    </div>
+                    <div class="label-input">
+                        <label for="Password">Password:</label>
+                        <div class="label-reg">
+                            <input type="password" id="Password" name="Password" placeholder="введите пароль">
+                            <input type="password" id="PasswordCopy" name="PasswordCopy" placeholder="повторите пароль">
+                        </div>
+                    </div>
+                    <h6 class="error">{{errorMessage}}</h6>
+                    <div class="btn-form">
+                        <button class="vhod-form" @click="vhodForm" v-if="registerbtn">Войти</button>
+                        <button class="register" @click="registered" v-if="registerbtn">Регистрация</button>
+                        <button class="za-regis" @click="zaRegis" v-if="!registerbtn">Зарегистрироваться</button>
+                    </div>
+                </form>
+        </div>
+    </div>
+    <div class="container right" v-if="nimda">
+        <div class="row">
+            <div class="col-2">
+                <div class="user"  @mouseenter="hov_user" @mouseleave="leave_user">
+                    <img src="img/icon/icon_href.png" alt="user" id="userIcon">
+                    <button class="burger" @click="user_menu"></button>
+                </div>
+                <div class="menu-user" v-show="menuUser">
+                    <ul class="menu" id="menu_user">
+                        <li @click="setting_admin"><img src="img/icon/settings.png" alt=""></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container" v-if="!settingA">
+        <div class="row">
+            <div class="col-2 offset-5">
+                <h2 class="marginH2">Hello admin!</h2>
+            </div>
+        </div>
+        <hr class="horizontal">
+        <h3 class="marginH3">Add Traks</h3>
+        <div class="row">
+            <div class="col-12 col-xxl-3 col-xl-3 col-lg-4 col-md-6 col-sm-4\">
+                <div class="track" id="add">
+                    <div class="shapka" id="track">
+                        <img v-bind:src="OblTrackA" alt="" >
+                    </div>
+                    <div class="opisanie">
+                        <div class="scroler"><h6>{{NameTrackA}}</h6></div>
+                        <div class="scroler"><p>{{GroupTrackA}}</p></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 addtrack">
+                <form action="" id="addTrackForm" enctype="multipart/form-data">
+                    <div class="label-input" v-if="Txtbtn">
+                        <label for="Name_track">Название трека:</label>
+                        <input type="text" id="trackName" name="Name_track" placeholder="введите название трека" v-bind:value="NameTrackA" v-model="NameTrackA">
+                    </div>
+                    <div class="label-input" v-if="Txtbtn">
+                        <label for="groupName">Название группы:</label>
+                        <input type="text" id="ispolnitel" name="groupName" placeholder="введите исполнителя(группу)" @input="vvodGr" v-model="GroupTrackA">
+                        <select id="ispoln" @change="selectGr">
+                            <option v-bind:value="NameGroup[index]" v-for= "(item, index) in NameGroup">{{NameGroup[index]}}</option>
+                        </select>
+                    </div>
+                    <div class="label-input" v-if="Txtbtn">
+                        <label for="NameAlbum">Название альбома(не обязательно):</label>
+                        <input type="text" id="NameAlbum" name="NameAlbum" placeholder="сингл"  v-model="NameAlbum">
+                        <select id="album-single" @change="selectAlb">
+                            <option v-bind:value="colAlbum[index]" v-for= "(item, index) in colAlbum">{{colAlbum[index]}}</option>
+                        </select>
+                    </div>
+                    <div class="label-input" v-if="MP3btn">
+                        <label>Файл(mp3):</label>
+                        <label for="MP3" class="download">Загрузить</label>
+                        <input type="file" class="input_file" name="fileMP3" id="MP3" accept="audio/mp3">
+                    </div>
+                    <div v-if="MP3btn">
+                        <label for="fileOBL" class="addObl">+</label>
+                        <input type="file" class="input_file" name="fileOBL" id="fileOBL" accept="image/*">
+                    </div>
+                    <h6 class="error">{{errorMessage}}</h6>
+                    <button class="add-track" @click="add_track" v-if="Txtbtn">Добавить</button>
+                    <button class="add-track" @click="addMp3" v-if="MP3btn">Добавить mp3</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="script/active_btn.js"></script>
+</html>
